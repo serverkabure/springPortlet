@@ -10,17 +10,7 @@
 
 	<bean id="viewController"
 		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
-		<property name="viewName" value="view" />
-	</bean>
-
-	<bean id="editController"
-		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
-		<property name="viewName" value="edit" />
-	</bean>
-
-	<bean id="helpController"
-		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
-		<property name="viewName" value="help" />
+		<property name="viewName" value="topPage/view" />
 	</bean>
 
 	<bean id="portletModeHandlerMapping"
@@ -28,8 +18,6 @@
 		<property name="portletModeMap">
 			<map>
 				<entry key="view" value-ref="viewController" />
-				<entry key="edit" value-ref="editController" />
-				<entry key="help" value-ref="helpController" />
 			</map>
 		</property>
 	</bean>

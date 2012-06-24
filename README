@@ -1,5 +1,9 @@
-spring framework portlet
+springPortlet
 
 <概要>
-Springフレームワークを使ったポートレット
+Spring Framework 3.1 を使ったポートレット
 
+JBoss GateInでメインフレームワークとして使用する。
+理由:
+JBoss内臓JSF2.0ライブラリに対応するポートレットブリッジが見つからない為。
+JSF2.0対応ポートレットブリッジは、まだどこもベータ状態。
