@@ -17,12 +17,12 @@ public class ToppageDao {
 	}
 
 	public String selectHtml() {
-		final String sql = "select distinct html from toppage";
+		final String sql = "select distinct value0 from toppage where key0 = 'html'";
 		return (String) this.jdbcTemplate.queryForObject(sql, String.class);
 	}
 
 	public void updateHtml(String html) {
-		final String sql = "update toppage set html = ?";
+		final String sql = "update toppage set value0 = ? where key0 = 'html'";
 		this.jdbcTemplate.update(sql, new Object[] { html },
 				new int[] { Types.VARCHAR });
 	}
