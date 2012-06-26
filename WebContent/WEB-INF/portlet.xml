@@ -34,11 +34,17 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
 		</supports>
 		<portlet-info>
 			<title>topPage</title>
 			<short-title>topPage</short-title>
 			<keywords>spring,topPage</keywords>
 		</portlet-info>
+		<portlet-preferences>
+			<preference>
+				<name>html</name>
+				<value>hello</value>
+			</preference></portlet-preferences>
 	</portlet>
 </portlet-app>

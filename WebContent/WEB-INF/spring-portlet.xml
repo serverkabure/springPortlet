@@ -25,6 +25,11 @@
 
 	<bean id="portletModeHandlerMapping"
 		class="org.springframework.web.portlet.handler.PortletModeHandlerMapping">
+		<property name="order" value="2">
+			<description>
+				通常は必要ないが、今回はportletModeParameterHandlerMappingとの間に優先順位を決める必要があるので指定する。portletModeParameterHandlerMappingよりも下の優先順位にする。
+			</description>
+		</property>
 		<property name="portletModeMap">
 			<map>
 				<entry key="view" value-ref="viewController" />
@@ -34,11 +39,36 @@
 		</property>
 	</bean>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.InternalResourceView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
+	<bean id="parameterMappingInterceptor"
+		class="org.springframework.web.portlet.handler.ParameterMappingInterceptor">
+		<description>portletModeParameterHandlerMappingの為に必要</description>
 	</bean>
+
+	<bean id="portletModeParameterHandlerMapping"
+		class="org.springframework.web.portlet.handler.PortletModeParameterHandlerMapping">
+		<description>パラメータ付リンクで画面を移動させるのに必要。パラメータごとにコントローラを変える。</description>
+		<property name="order" value="1">
+			<description>
+				portletModeHandlerMappingとの間に優先順位を付ける為に指定する。portletModeHandlerMappingよりも優先順位を上にする。こちらが上でなければ、パラメータ付きリンクが動作しない。
+			</description>
+		</property>
+		<property name="portletModeParameterMap">
+			<map>
+				<entry key="view">
+					<map>
+						<entry key="view1" value-ref="viewController" />
+					</map>
+				</entry>
+				<entry key="edit">
+					<map></map>
+				</entry>
+			</map>
+		</property>
+		<property name="interceptors">
+			<list>
+				<ref bean="parameterMappingInterceptor" />
+			</list>
+		</property>
+	</bean>
+
 </beans>

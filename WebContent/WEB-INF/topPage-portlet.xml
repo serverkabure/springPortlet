@@ -8,9 +8,36 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<bean id="viewController"
-		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
+	<!-- MySQLデータソース -->
+	<bean id="dataSource1"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.4.244.1:3306/portal" />
+		<property name="username" value="admin" />
+		<property name="password" value="m7h7qbdZJyLr" />
+	</bean>
+
+	<!-- Postgresデータソース -->
+	<bean id="dataSource2"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost/work" />
+		<property name="username" value="postgres" />
+		<property name="password" value="yasutake" />
+	</bean>
+
+	<bean id="toppageDao" class="spring.toppage.ToppageDao">
+		<property name="dataSource" ref="dataSource2" />
+	</bean>
+
+	<bean id="viewController" class="spring.toppage.ViewController">
 		<property name="viewName" value="topPage/view" />
+		<property name="toppageDao" ref="toppageDao"></property>
+	</bean>
+
+	<bean id="editController" class="spring.toppage.EditController">
+		<property name="viewName" value="topPage/edit" />
+		<property name="toppageDao" ref="toppageDao"></property>
 	</bean>
 
 	<bean id="portletModeHandlerMapping"
@@ -18,15 +45,10 @@
 		<property name="portletModeMap">
 			<map>
 				<entry key="view" value-ref="viewController" />
+				<entry key="edit" value-ref="editController" />
 			</map>
 		</property>
 	</bean>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.InternalResourceView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+
 </beans>
