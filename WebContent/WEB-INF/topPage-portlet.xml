@@ -2,29 +2,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- <jee:jndi-lookup id="mysqlDS" jndi-name="java:jboss/datasources/MysqlDS"
+		/> -->
 
 	<!-- MySQLデータソース -->
-	<bean id="dataSource1"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.4.244.1:3306/portal" />
-		<property name="username" value="admin" />
-		<property name="password" value="m7h7qbdZJyLr" />
-	</bean>
+	<!-- <bean id="dataSource1" -->
+	<!-- class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+	<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+	<!-- <property name="url" value="jdbc:mysql://127.4.244.1:3306/portal" /> -->
+	<!-- <property name="username" value="admin" /> -->
+	<!-- <property name="password" value="m7h7qbdZJyLr" /> -->
+	<!-- </bean> -->
 
 	<!-- Postgresデータソース -->
-	<bean id="dataSource2"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://localhost/work" />
-		<property name="username" value="postgres" />
-		<property name="password" value="yasutake" />
-	</bean>
+	<!-- <bean id="dataSource2" -->
+	<!-- class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+	<!-- <property name="driverClassName" value="org.postgresql.Driver" /> -->
+	<!-- <property name="url" value="jdbc:postgresql://localhost/work" /> -->
+	<!-- <property name="username" value="postgres" /> -->
+	<!-- <property name="password" value="yasutake" /> -->
+	<!-- </bean> -->
 
 	<!-- H2データソース -->
 	<!-- <bean id="dataSource3" -->
@@ -34,18 +36,32 @@
 	<!-- <property name="password" value="sa" /> -->
 	<!-- </bean> -->
 
-	<bean id="toppageDao" class="spring.toppage.ToppageDao">
-		<property name="dataSource" ref="dataSource2" />
-	</bean>
+	<!-- DataSource設定 -->
+	<!-- <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate"
+		/> -->
+	<!-- <bean id="dataSource4" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+	<!-- <property name="jndiName" value="java:jboss/datasources/MysqlDS"/> -->
+	<!-- <property name="jndiName" value="java:jboss/datasources/MysqlDS" /> -->
+	<!-- <property name="jndiTemplate" ref="jndiTemplate" /> -->
+	<!-- </bean> -->
 
-	<bean id="viewController" class="spring.toppage.ViewController">
+	<!-- <jee:jndi-lookup id="dataSource" -->
+	<!-- jndi-name="java:jboss/datasources/MysqlDS" resource-ref="false" /> -->
+
+	<!-- <bean id="toppageDao" class="spring.toppage.ToppageDaoImpl"> -->
+	<!-- <property name="dataSource" ref="dataSource2" /> -->
+	<!-- <constructor-arg type="java.lang.String" value="java:jboss/datasources/MysqlDS"
+		/> -->
+	<!-- </bean> -->
+
+	<bean id="viewController" class="spring.toppage.ViewController2">
 		<property name="viewName" value="topPage/view" />
-		<property name="toppageDao" ref="toppageDao"></property>
+		<!-- <property name="toppageDao" ref="toppageDao" /> -->
 	</bean>
 
-	<bean id="editController" class="spring.toppage.EditController">
+	<bean id="editController" class="spring.toppage.EditController2">
 		<property name="viewName" value="topPage/edit" />
-		<property name="toppageDao" ref="toppageDao"></property>
+		<!-- <property name="toppageDao" ref="toppageDao" /> -->
 	</bean>
 
 	<bean id="portletModeHandlerMapping"
@@ -58,5 +74,12 @@
 		</property>
 	</bean>
 
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.InternalResourceView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 
 </beans>

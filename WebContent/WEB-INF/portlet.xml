@@ -45,6 +45,7 @@
 			<preference>
 				<name>html</name>
 				<value>hello</value>
-			</preference></portlet-preferences>
+			</preference>
+		</portlet-preferences>
 	</portlet>
 </portlet-app>
