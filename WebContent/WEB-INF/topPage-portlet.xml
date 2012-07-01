@@ -55,12 +55,12 @@
 	<!-- </bean> -->
 
 	<bean id="viewController" class="spring.toppage.ViewController2">
-		<property name="viewName" value="topPage/view" />
+		<property name="viewName" value="view" />
 		<!-- <property name="toppageDao" ref="toppageDao" /> -->
 	</bean>
 
 	<bean id="editController" class="spring.toppage.EditController2">
-		<property name="viewName" value="topPage/edit" />
+		<property name="viewName" value="edit" />
 		<!-- <property name="toppageDao" ref="toppageDao" /> -->
 	</bean>
 
@@ -78,7 +78,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.InternalResourceView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="prefix" value="/WEB-INF/jsp/topPage/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 

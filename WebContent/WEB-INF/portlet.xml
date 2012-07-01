@@ -48,4 +48,22 @@
 			</preference>
 		</portlet-preferences>
 	</portlet>
+	<!-- envPage -->
+	<portlet>
+		<portlet-name>envPage</portlet-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/envPage-portlet.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>mime-type</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>envPage</title>
+			<short-title>envPage</short-title>
+			<keywords>spring,envPage</keywords>
+		</portlet-info>
+	</portlet>
 </portlet-app>
