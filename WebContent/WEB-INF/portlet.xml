@@ -57,7 +57,7 @@
 			<value>/WEB-INF/envPage-portlet.xml</value>
 		</init-param>
 		<supports>
-			<mime-type>mime-type</mime-type>
+			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
 		<portlet-info>
@@ -65,5 +65,31 @@
 			<short-title>envPage</short-title>
 			<keywords>spring,envPage</keywords>
 		</portlet-info>
+	</portlet>
+	<!-- logPage -->
+	<portlet>
+		<portlet-name>logPage</portlet-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/logPage-portlet.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>logPage</title>
+			<short-title>logPage</short-title>
+			<keywords>spring,logPage</keywords>
+		</portlet-info>
+		<portlet-preferences>
+			<preference>
+				<name>filePath</name>
+				<value>C:\GateIn-3.3.0-GA-jbossas7\standalone\log\server.log</value>
+			</preference>
+		</portlet-preferences>
 	</portlet>
 </portlet-app>

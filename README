@@ -19,3 +19,15 @@ JSF2.0対応ポートレットブリッジは、まだどこもベータ状態�
 よって、トップページにユーザ認識機能を追加し、管理者ならばHTML変更を可能とするように変更。
 
 20120712 環境変数表示用ポートレット追加
+
+20100703 ログ表示ポートレットで使用したDDL
+CREATE TABLE LogMessage (
+  Log4J_TIMESTAMP varchar(64) DEFAULT NULL,
+  Log4J_PREFIX_MDC varchar(256) DEFAULT NULL,
+  Log4J_LEVEL varchar(32) DEFAULT NULL,
+  Log4J_CATEGORY varchar(256) DEFAULT NULL,
+  Log4J_THREAD varchar(256) DEFAULT NULL,
+  Log4J_MESSAGE varchar(1024) DEFAULT NULL,
+  Line_Number int(255) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (Line_Number)
+)
