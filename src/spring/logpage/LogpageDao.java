@@ -16,8 +16,8 @@ public interface LogpageDao {
 	 * @return ロードしたログデータ
 	 * @throws Exception
 	 */
-	public abstract List<LogMessageObj> readLogmessages(String filePath)
-			throws Exception;
+	public abstract List<LogMessageObj> readLogmessages(String filePath,
+			String log4jPattern) throws Exception;
 
 	/**
 	 * MySQLにログをインサートする

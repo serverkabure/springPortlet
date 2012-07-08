@@ -30,7 +30,9 @@ public class EditController extends ParameterizableViewController {
 		PortletPreferences pref = request.getPreferences();
 		String filePath = pref.getValue("filePath", "/");
 		model.put("filePath", filePath);
-
+		// log4jPattern
+		String log4jPattern = pref.getValue("log4jPattern", "/");
+		model.put("log4jPattern", log4jPattern);
 		// return new ModelAndView(this.getViewName(), "model", model);
 		return new ModelAndView(this.getViewName(), model);
 	}
@@ -38,12 +40,16 @@ public class EditController extends ParameterizableViewController {
 	@Override
 	protected void handleActionRequestInternal(ActionRequest request,
 			ActionResponse response) throws Exception {
+		PortletPreferences pref = request.getPreferences();
+		// filePath
 		String filePath = request.getParameter("filePath");
-		if (filePath != null) {
-			PortletPreferences pref = request.getPreferences();
+		if (filePath != null)
 			pref.setValue("filePath", filePath);
-			pref.store();
-		}
+		// log4jPattern
+		String log4jPattern = request.getParameter("log4jPattern");
+		if (log4jPattern != null)
+			pref.setValue("log4jPattern", log4jPattern);
+		pref.store();
 	}
 
 }

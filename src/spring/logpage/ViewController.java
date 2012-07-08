@@ -26,13 +26,16 @@ public class ViewController extends ParameterizableViewController {
 	protected ModelAndView handleRenderRequestInternal(RenderRequest request,
 			RenderResponse response) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
-		//
+
 		PortletPreferences pref = request.getPreferences();
-		String filePath = pref.getValue("filePath", "/");
+		String filePath = pref.getValue("filePath", "x");// filePath
+		String log4jPattern = pref.getValue("log4jPattern", "x");// log4jPattern
+		//
 		model.put("filePath", filePath);
-		//ログメッセージのリストを取得する
-		List<LogMessageObj> list = this.logpageDao.readLogmessages(filePath);
-		//displaytagでソート、ページングするリストへ変換
+		// ログメッセージのリストを取得する
+		List<LogMessageObj> list = this.logpageDao.readLogmessages(filePath,
+				log4jPattern);
+		// displaytagでソート、ページングするリストへ変換
 		PaginatedListImpl list2 = new PaginatedListImpl(request);
 		list2.setList(list);
 		model.put("list", list);

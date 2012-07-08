@@ -90,6 +90,10 @@
 				<name>filePath</name>
 				<value>C:\GateIn-3.3.0-GA-jbossas7\standalone\log\server.log</value>
 			</preference>
+			<preference>
+				<name>log4jPattern</name>
+				<value>%d{HH:mm:ss,SSS} %-5p [%c] %m%n</value>
+			</preference>
 		</portlet-preferences>
 	</portlet>
 </portlet-app>
