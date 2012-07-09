@@ -3,24 +3,23 @@ package spring.logpage;
 import java.util.List;
 
 /**
- * HTML文の収容先をポートレットプリファレンスへ変更
+ * ログメッセージのリード/ライト用DAO
  *
  * @author sk
  */
 public interface LogpageDao {
 	/**
-	 * server.logからログをロードする
+	 * ログメッセージをリードする
 	 *
 	 * @param filePath
 	 *
 	 * @return ロードしたログデータ
 	 * @throws Exception
 	 */
-	public abstract List<LogMessageObj> readLogmessages(String filePath,
-			String log4jPattern) throws Exception;
+	public abstract List<LogMessageObj> readLogmessages(String filePath,String log4jPattern) throws Exception;
 
 	/**
-	 * MySQLにログをインサートする
+	 * ログメッセージをライトする
 	 *
 	 * @param logMessage
 	 */

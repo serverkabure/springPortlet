@@ -10,15 +10,17 @@ import org.jalore.log4j.Log4JFileReader;
 import org.jalore.log4j.Log4JProperties;
 
 /**
- * HTML文の収容先をポートレットプリファレンスへ変更
+ * ログファイルからログメッセージをリードするDAO
  *
  * @author sk
  */
 public class LogpageDaoImpl implements LogpageDao {
+	public LogpageDaoImpl() {
+	}
+
 	// JBoss独自仕様部分をメッセージとして扱う"%d{HH:mm:ss,SSS} %-5p [%c] (%t) %m%n";
 	@Override
-	public List<LogMessageObj> readLogmessages(String filePath,
-			String log4jPattern) throws Exception {
+	public List<LogMessageObj> readLogmessages(String filePath,String log4jPattern) throws Exception {
 		List<LogMessageObj> logmessages = new ArrayList<LogMessageObj>();
 		// nextMessage後に、自分でReaderをcloseするので、Log4JFileReaderを使用する
 		LogReader logReader = new Log4JFileReader(new File(filePath),
@@ -51,5 +53,6 @@ public class LogpageDaoImpl implements LogpageDao {
 	public void writeLogmessage(LogMessageObj logMessage) {
 		// TODO 自動生成されたメソッド・スタブ
 	}
+
 
 }

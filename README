@@ -20,7 +20,7 @@ JSF2.0対応ポートレットブリッジは、まだどこもベータ状態�
 
 20120712 環境変数表示用ポートレット追加
 
-20100703 ログ表示ポートレットで使用したDDL
+20120703 ログ表示ポートレットで使用したDDL
 CREATE TABLE LogMessage (
   Log4J_TIMESTAMP varchar(64) DEFAULT NULL,
   Log4J_PREFIX_MDC varchar(256) DEFAULT NULL,
@@ -31,3 +31,5 @@ CREATE TABLE LogMessage (
   Line_Number int(255) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (Line_Number)
 )
+
+20120709 WEB-INF以下をポートレットごとの階層に整理

@@ -7,16 +7,17 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- * コンストラクタでJNDIルックアップを行いデータソースを取得する
+ * DBにログメッセージをリード/ライトするDAO<br />
+ * 現在未使用
  *
  * @author sk
  *
  */
-public class LogpageDaoJndiImpl extends LogpageDaoImpl {
+public class LogpageDaoDbImpl implements LogpageDao {
 	// private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 
-	public LogpageDaoJndiImpl() {
+	public LogpageDaoDbImpl() {
 	}
 
 	public void setDataSource(DataSource dataSource) {
@@ -25,7 +26,8 @@ public class LogpageDaoJndiImpl extends LogpageDaoImpl {
 		this.jdbcTemplate.setDataSource(dataSource);
 	}
 
-	public List<LogMessageObj> readLogmessages() {
+	@Override
+	public List<LogMessageObj> readLogmessages(String filePath,String log4jPattern) throws Exception {
 		// "SELECT Log4J_TIMESTAMP, Log4J_PREFIX_MDC, Log4J_LEVEL, Log4J_CATEGORY, Log4J_THREAD, Log4J_MESSAGE, Line_Number FROM LogMessage WHERE 1"
 		String sql = "SELECT * FROM LogMessage WHERE 1";
 		return this.jdbcTemplate.queryForList(sql, LogMessageObj.class);
@@ -36,4 +38,5 @@ public class LogpageDaoJndiImpl extends LogpageDaoImpl {
 		String sql = "INSERT INTO LogMessage(Log4J_TIMESTAMP, Log4J_PREFIX_MDC, Log4J_LEVEL, Log4J_CATEGORY, Log4J_THREAD, Log4J_MESSAGE, Line_Number) VALUES (?,?,?,?,?,?,?)";
 
 	}
+
 }

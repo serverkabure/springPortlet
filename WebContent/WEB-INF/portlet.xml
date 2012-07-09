@@ -9,7 +9,7 @@
 		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
 		<init-param>
 			<name>contextConfigLocation</name>
-			<value>/WEB-INF/spring-portlet.xml</value>
+			<value>/WEB-INF/spring/spring-portlet.xml</value>
 		</init-param>
 		<supports>
 			<mime-type>text/html</mime-type>
@@ -29,7 +29,7 @@
 		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
 		<init-param>
 			<name>contextConfigLocation</name>
-			<value>/WEB-INF/topPage-portlet.xml</value>
+			<value>/WEB-INF/topPage/topPage-portlet.xml</value>
 		</init-param>
 		<supports>
 			<mime-type>text/html</mime-type>
@@ -54,7 +54,7 @@
 		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
 		<init-param>
 			<name>contextConfigLocation</name>
-			<value>/WEB-INF/envPage-portlet.xml</value>
+			<value>/WEB-INF/envPage/envPage-portlet.xml</value>
 		</init-param>
 		<supports>
 			<mime-type>text/html</mime-type>
@@ -72,7 +72,7 @@
 		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
 		<init-param>
 			<name>contextConfigLocation</name>
-			<value>/WEB-INF/logPage-portlet.xml</value>
+			<value>/WEB-INF/logPage/logPage-portlet.xml</value>
 		</init-param>
 		<supports>
 			<mime-type>text/html</mime-type>
